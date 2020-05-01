@@ -1,1 +1,1 @@
-web: ./nodebb setup && ./nodebb start
+web: cd node-Web-Server && npm start
