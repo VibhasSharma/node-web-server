@@ -2,11 +2,15 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 var app = express();
-var port = 3004;
+const port = process.env.PORT || 3000;
 
 hbs.registerPartials(__dirname + '/Views/Partials');
 
 app.set('view engine','hbs');
+
+app.listen(port, () =>{
+    console.log(`Server listening on ${port}`);
+});
 
 app.use((req,res,next) => {
     var now = new Date().toString();
@@ -37,9 +41,6 @@ hbs.registerHelper('screamIt', (text) => {
     return text.toUpperCase();
 });
 
-app.listen(port, () =>{
-    console.log('Server Listening on port: '+ port);
-});
 app.get('/', (req,res) => {
     res.render('home.hbs', {
         pageTitle: 'Home Page',
