@@ -1,1 +1,1 @@
-web: node server.js
+web: ./nodebb setup && ./nodebb start
